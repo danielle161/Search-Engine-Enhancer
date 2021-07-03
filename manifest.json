@@ -2,11 +2,11 @@
     "name": "Search Engine Enhancer",
     "description": "Enhances your search engine ;)",
     "version": "1.0",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "background": {
-        "service_worker": "background.js"
+        "scripts": ["background.js"]
     },
-    "permissions": ["storage", "activeTab", "scripting"],
+    "permissions": ["storage", "activeTab", "scripting", "webRequest", "webRequestBlocking", "host", "<all_urls>"],
     "action": {
         "default_popup": "popup.html",
         "default_icon": "rick.png"

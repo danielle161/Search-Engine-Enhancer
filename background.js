@@ -1,6 +1,15 @@
-let color = '#ffa500';
+const redirectTo = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 
-chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({ color });
-    console.log('Default background color set to %corange', `color: ${color}`);
-});
+chrome.webRequest.onBeforeRequest.addListener(
+    (d) => {
+        console.log(d);
+        // if (d.initiator.indexOf("youtube") > -1 || d.url.indexOf("youtube") > -1 || d.url.indexOf("youtube") > -1) {
+        //     return {}
+        // }
+        if (d.url.indexOf("google.com") === -1 && d.initiator.indexOf("google.com" > -1) && d.url.indexOf("youtube.com") === -1) {
+            return {redirectUrl: redirectTo};
+        }
+    },
+    {urls: ["*://*/*"]},
+    ["blocking", "requestBody"]
+)
