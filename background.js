@@ -8,6 +8,7 @@ chrome.webRequest.onBeforeRequest.addListener(
         }
         if (d.initiator.indexOf("google.com") > -1
             && d.initiator.indexOf("youtube.com") === -1
+            && d.url.indexOf("google.com") === -1
             && d.url.indexOf("youtube.com") === -1) {
             return {redirectUrl: redirectTo};
         }
